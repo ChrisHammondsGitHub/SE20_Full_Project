@@ -1,0 +1,67 @@
+import java.io.IOException;
+import java.io.Serializable;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Test extends HttpServlet {
+private static final long serialVersionUID = 1L;
+
+private static final String VIEW_NAME = "/WEB-INF/index.jsp";
+private static final String MODEL_NAME = "form";
+
+public Test() {
+    super();
+}
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    request.setAttribute(MODEL_NAME, new SimpleForm());
+    request.getRequestDispatcher(VIEW_NAME).forward(request, response);
+}
+
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    final SimpleForm form = map(request);
+
+    if(form.getfName().equalsIgnoreCase("abc")){
+        request.setAttribute(MODEL_NAME, form);
+        // put additional attributes on the request
+        // e.g. validation errors,...
+        request.getRequestDispatcher(VIEW_NAME).forward(request, response);
+    }else{
+        System.out.println("No problem");
+        response.sendRedirect("/SuccessServlet");
+    }
+}
+
+private SimpleForm map(final HttpServletRequest request) {
+    SimpleForm form = new SimpleForm();
+    form.setfName(request.getParameter("fName"));
+    form.setlName(request.getParameter("lName"));
+    return form;
+}
+
+public static class SimpleForm implements Serializable {
+    private static final long serialVersionUID = -2756917543012439177L;
+
+    private String fName;
+    private String lName;
+
+    public String getfName() {
+        return fName;
+    }
+    public void setfName(String fName) {
+        this.fName = fName;
+    }
+    public String getlName() {
+        return lName;
+    }
+    public void setlName(String lName) {
+        this.lName = lName;
+    }
+
+}
+
+}

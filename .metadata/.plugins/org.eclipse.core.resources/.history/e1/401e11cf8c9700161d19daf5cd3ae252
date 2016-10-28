@@ -1,0 +1,13 @@
+
+import java.io.File;
+import java.*;
+import MovieBusinessLayer.*;
+
+public class PresentationLayer {
+
+	public static void main(String[] args) {
+		MovieBusinessLayer test = new MovieBusinessLayer();
+		File file = File("C:\\Everything\\Capita\\NovusMovieProject\\MovieDataLayer\\TestData.csv");
+		test.GetFilmsFromCSV(file.getAbsolutePath().toString());
+	}
+}

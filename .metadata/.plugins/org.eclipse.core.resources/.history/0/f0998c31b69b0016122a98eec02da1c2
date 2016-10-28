@@ -1,0 +1,44 @@
+<html>
+
+<head>
+<script language="JavaScript">
+function getOptions(beertype) {
+	var list;
+	var listValue;
+	if (beertype == "Lager") {
+		list = new Array("Budweiser","Coors","Longboard","Miller Genuine Draft","Heineken");
+		listValue = new Array("Budweiser","Coors","Longboard","Miller Genuine Draft","Heineken");
+	}
+	if (beertype == "Ale") {
+		list = new Array("Bridgeport IPA","Red Hook ESB","Alaskan Amber","Widmer Hefewiezen");
+		listValue = new Array("Bridgeport IPA","Red Hook ESB","Alaskan Amber","Widmer Hefewiezen");
+	}
+	if (beertype == "Porter") {
+		list = new Array("Black Butte","Pete's Wicked","Guiness");
+		listValue = new Array("Black Butte","Pete's Wicked","Guiness");
+	}
+	for (var i = 0; i < document.OptionMaker.BeerType.length; i++) { //Clear the 2nd menu
+		document.OptionMaker.Brand.options[i] = null;
+	}
+	for (var i = 0; i < list.length; i++) { //Repopulate 2nd menu
+		document.OptionMaker.Brand.options[i] = new Option(list[i],listValue[i],0,0);
+	}
+}
+</script>
+<title>Dynamic Options</title>
+</head>
+
+<body>
+
+<form name="OptionMaker">
+  <p><select size="10" name="BeerType" onchange="getOptions(this.value)">
+    <option value="Lager">Lager</option>
+    <option value="Ale">Ale</option>
+    <option value="Porter">Porter</option>
+  </select>&nbsp;&nbsp;&nbsp;&nbsp; <select size="10" name="Brand" onclick="alert(this.value)">
+  </select></p>
+</form>
+
+</body>
+
+</html>

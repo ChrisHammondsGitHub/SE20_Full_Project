@@ -1,0 +1,14 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+</head>
+<body>
+
+<form method="POST">
+    First Name<input type="text" name="fName" value="${form.fName}"><br>
+    Last Name<input type="text" name="lName" value="${form.lName}">
+    <input type="submit" value="Send">
+</form>
+
+</body>
+</html> 

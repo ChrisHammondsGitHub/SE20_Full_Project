@@ -1,0 +1,90 @@
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import MovieBusinessLayer.*;
+import MovieClassLayer.Film;
+
+/**
+ * Servlet implementation class Test
+ */
+@WebServlet("/Test")
+public class Test extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	String s; 
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Test() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    
+    protected void processResponse(HttpServletRequest request, HttpServletResponse response)
+    		throws ServletException, IOException {
+    	
+    	 response.setContentType("text/html;charset=UTF-8");
+ 	    PrintWriter out= response.getWriter();
+ 		response.getWriter().println();
+
+    }
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+	    response.setContentType("text/html;charset=UTF-8");
+	    PrintWriter out= response.getWriter();
+		response.getWriter().println("Welcome to TestSevlet");
+	try{		
+		String Film_ID = request.getParameter("FilmNameList");
+		String Director_Name = request.getParameter("Director_Name");
+		String Actor_Name = request.getParameter("Actor_Name");
+		String test = request.getParameter("FilmNameList");
+		out.println(test);
+
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); 
+		request.setAttribute("message", "ty");
+		request.setAttribute("Film_ID",Film_ID);
+		request.setAttribute("Director_Name",Director_Name);
+		request.setAttribute("Actor_Name",Actor_Name);
+		rd.forward(request, response);	
+
+	}finally {
+		out.close();
+	}
+	}
+    
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub		
+		PrintWriter out=  response.getWriter();
+//		List<Film> f=MovieBusinessLayer.GetFilmsFromCSV("C:\\Everything\\Capita\\NovusMovieProject\\MovieDataLayer\\TestData.csv").getFilms();
+//		out.println(f.get(0).FilmID );
+//		out.println(f.get(0).FilmName );
+//		out.println(f.get(0).FilmYear );
+//		out.println(f.get(0).ImdbRating );
+
+		
+		//response.getWriter().append(s);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

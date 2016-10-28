@@ -1,0 +1,10 @@
+
+import MovieBusinessLayer.*;
+
+public class PresentationLayer {
+
+	public static void main(String[] args) {
+		MovieBusinessLayer test = new MovieBusinessLayer();
+		
+	}
+}

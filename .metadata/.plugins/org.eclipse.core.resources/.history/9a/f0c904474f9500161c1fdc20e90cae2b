@@ -1,0 +1,79 @@
+package MovieBusinessLayer;
+
+import MovieClassLayer.Actor;
+import MovieClassLayer.Director;
+import MovieClassLayer.Film;
+public class MovieBusinessLayer {
+
+
+	public mcl.Films GetFilmsFromCSV(String csvPath) 
+	{
+		// Gets all the properties of films from the films class of movie class layer. 
+	}
+
+
+
+
+	public List<mcl.Director> GetDistinctDirectorsFromFilms(mcl.Films films, String directorID)
+	{
+		// Gets the List of Directors from the Films class
+		// It receives DirectorID and the List of films	
+
+	}
+
+
+
+	public List<mcl.Actor> GetDistinctActorsFromFilms(mcl.Films films, String actorID)
+	{
+		//Gets the list of actors from the Films class. It receives the Actor ID and list of films.
+	}
+
+
+
+	public List<mcl.SimplisticFilm> GetDistinctSimplisticFilmFromFilms(mcl.Films films, String filmID)
+	{
+		//this will be used for the drop-down list.
+		//this will only get the FilmID and FilmName
+		//this method will receive Films and FilmID
+	}
+
+
+
+	public mcl.Films GetFilmsSubset(String filmID, String directorID, String actorID, mcl.Films films)
+	{
+		//This method will use GetFilmSubsetByMovieID, GetFilmSubsetByDirectorID and GetFilmSubsetByActorID
+		//Search for list of films in Films class using filmId, directorId and actorID.
+		//returns the film from the list related to its FilmID, DirectorID and ActorID
+	}
+
+
+	public mcl.Films GetFilmSubsetByMovieID(mcl.Films films, String filmID)
+	{
+		//this method is used to filter out the movies using the FilmID provided
+		//it will receive the full list of films and the FilmID
+		//this will return the list of films which matches with their FilmID 
+
+	}
+
+
+
+	public mcl.Films GetFilmSubsetByDirectorID(mcl.Films films, String directorID)
+	{
+		//this method is used to filter out the movies using the DirectorID provided
+		//it will receive the full list of films and the DirectorID
+		//this will return the list of films which matches with their DirectorID 
+
+	}
+
+
+
+	public mcl.Films GetFilmSubsetByActorID(mcl.Films films, String actorID)
+	{
+		//this method is used to filter out the movies using the ActorID provided
+		//it will receive the full list of films and the ActorID
+		//this will return the list of films which matches with their ActorID 
+	}
+
+
+}
+

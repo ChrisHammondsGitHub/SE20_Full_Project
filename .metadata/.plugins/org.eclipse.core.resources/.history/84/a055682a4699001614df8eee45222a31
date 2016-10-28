@@ -1,0 +1,23 @@
+package MovieBusinessLayer;
+
+import java.util.ArrayList;
+
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String[][] g = new String[5][5];
+
+		g[0][0]= "tes";
+		
+		 for (int i = 0; i < g.length; i++) {
+             for (int j = 0; j < g[i].length; j++) {
+            	 g[i][j]= "f"+i;
+            	 System.out.println(g);
+             }
+         }
+		
+	}
+
+}

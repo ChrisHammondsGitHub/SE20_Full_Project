@@ -1,0 +1,94 @@
+<%@page import="MovieBusinessLayer.*"%>
+<%@page import="MovieClassLayer.*"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+
+	<script type="text/javascript">
+		function check(FilmNameList) {
+			 var selectedText = FilmNameList.options[FilmNameList.selectedIndex].innerHTML;
+		        alert("Selected Text: " + selectedText);
+		        document.getElementById("btnr").click();
+		        
+		}
+	</script>
+
+
+	<%
+		Films f = MovieBusinessLayer
+				.GetFilmsFromCSV("C:\\Everything\\Capita\\NovusMovieProject\\MovieDataLayer\\TestData.csv");
+		//Sends csv file path to get films from csv and stores in variable f.
+	%>
+
+
+	<form method="get" action="Test" name="Form1">
+
+
+		<!-- TODO fix the seleced -->
+		<select id="FilmNameList" name="FilmNameList" onChange="check(this);">
+			<!-- creates drop down list -->
+
+			<option value="">please select one</option>
+
+			<%
+				for (int i = 0; i < f.getFilms().size(); i++) {
+			%>
+			<option value=<%=f.getFilms().get(i).FilmName%>>
+				<%=f.getFilms().get(i).FilmName%>
+				<%
+					}
+				%>
+			</option>
+			<!-- Gets film name from csv file which is stored in f. Populates the dropdown list -->
+
+
+		</select> <br> <br> <select id="DirectorNameList"
+			name="DirectorNameList" onchange="">
+			<option value="">please select one</option>
+			<option name="DropDownListDirectors" value=""></option>
+
+			<%
+				for (int i = 0; i < f.getFilms().size(); i++) {
+			%>
+			<option value=<%=f.getFilms().get(i).Directors.get(0).DirectorName%>>
+				<%=f.getFilms().get(i).Directors.get(0).DirectorName%>
+				<%
+					}
+				%>
+			</option>
+
+
+		</select> <br> <br> <select id="ActorNameList" name="ActorNameList"
+			onchange="">
+			<option value="">please select one</option>
+			<option name="DropDownListActors" value=""></option>
+
+			<%
+				for (int i = 0; i < f.getFilms().size(); i++) {
+			%>
+			<option value=<%=f.getFilms().get(i).Actors.get(0).ActorName%>>
+				<%=f.getFilms().get(i).Actors.get(0).ActorName%>
+				<%
+					}
+				%>
+			</option>
+		</select> <br> <br>
+
+		<!-- TODO  comeback onClick -->
+		<button name="btnReset" onClick="window.location.reload()">Reset</button>
+		<button name="btnr" onClick="Test" hidden="hidden">r</button>
+		
+		<!-- Resets drop down lists -->
+	</form>
+
+</body>
+</html>

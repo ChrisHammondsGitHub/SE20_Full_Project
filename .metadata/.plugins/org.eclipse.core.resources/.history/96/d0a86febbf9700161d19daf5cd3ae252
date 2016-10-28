@@ -1,0 +1,33 @@
+<%@page import="MovieBusinessLayer.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<h1>dam</h1>
+ <form method="post" action="test" name="test">
+    <select name="colour" onchange="document.productForm.submit();">
+        <option value="dropdown"> <% MovieBusinessLayer.GetFilmsFromCSV("C:\\Everything\\Capita\\NovusMovieProject\\MovieDataLayer\\TestData.csv").getFilms().get(0).FilmID;%>
+        <option value="apple">Apple
+        <option value="oragne">Orange
+        <option value="grapes">Grapes
+    </select>
+    <input type="hidden" name="dropdown" id="dropdown">
+    <input type="submit" value="click" name="dropdown" id="dropdown">
+    <form>
+
+  <%
+        String colour = request.getParameter("colour");
+        out.println(colour);
+    %>
+      <% out.println("<br>"+response.set("message")); %>
+    <% out.println("<br><br>"+request.getAttribute("Film_ID")); %>
+	
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+package MovieBusinessLayer;
+
+public class MovieBusinessLayer {
+
+
+	public mcl.Films GetFilmsFromCSV(string csvPath)
+	{
+
+	}
+	
+	
+	
+
+	public List<mcl.Director> GetDistinctDirectorsFromFilms(mcl.Films films, string directorID)
+	{
+
+	}
+	
+	
+	
+	public List<mcl.Actor> GetDistinctActorsFromFilms(mcl.Films films, string actorID)
+	{
+
+	}
+	
+	
+	
+	public List<mcl.SimplisticFilm> GetDistinctSimplisticFilmFromFilms(mcl.Films films, string filmID)
+	{
+
+	}
+	
+	
+
+	public mcl.Films GetFilmsSubset(string filmID, string directorID, string actorID, mcl.Films films)
+	{
+
+	}
+	
+	
+	public mcl.Films GetFilmSubsetByMovieID(mcl.Films films, string filmID)
+	{
+
+	}
+	
+	
+	
+	public mcl.Films GetFilmSubsetByDirectorID(mcl.Films films, string directorID)
+	{
+
+	}
+	
+	
+	
+	public mcl.Films GetFilmSubsetByActorID(mcl.Films films, string actorID)
+	{
+
+	}
+
+
+}
+

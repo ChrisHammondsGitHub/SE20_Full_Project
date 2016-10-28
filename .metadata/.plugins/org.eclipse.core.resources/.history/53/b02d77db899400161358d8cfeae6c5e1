@@ -1,0 +1,37 @@
+package MovieClassLayer;
+
+import java.util.List;
+
+public class Director {
+
+	public List<Director> DirectorID;
+	public List<Director> DirectorName;
+	public Director(List<Director> directorID, List<Director> directorName)
+	{
+		this.DirectorID= directorID;
+		this.DirectorName= directorName;
+	}
+
+	public Director(){
+
+		this.DirectorID= null;
+		this.DirectorName= null;
+	}
+	
+	
+	public List<Director> getDirectorID() {
+		return DirectorID;
+	}
+
+	public void setDirectorID(List<Director>  directorID) {
+		DirectorID = directorID;
+	}
+
+	public List<Director> getDirectorName() {
+		return DirectorName;
+	}
+
+	public void setDirectorName(List<Director> directorName) {
+		DirectorName = directorName;
+	}
+}

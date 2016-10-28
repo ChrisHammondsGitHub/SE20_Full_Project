@@ -1,0 +1,115 @@
+package MovieDataLayer;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import MovieClassLayer.*;
+
+public class MovieDataLayer {
+
+	public static Films GetCsvData(String FilePath){
+
+		//BufferedReader br;
+		ArrayList<Film> list = new ArrayList<Film>();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(FilePath));
+
+			String line = br.readLine(); // Reading header. Ignores the first line.
+			while ((line = br.readLine()) != null && !line.isEmpty()) {
+				String[] fields = line.split(","); //Splits the line by comma values	
+				//System.out.println(Completefilm(fields).FilmName,list);
+				list.add(Completefilm(fields,list));
+
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Films blah = new Films();
+		blah.setFilms(list);
+		System.out.println(blah.getFilms().get(2).Actors.get(1).ActorName);
+		return blah;
+
+	}
+
+	public static Film Completefilm (String[] fields, ArrayList<Film> films){
+
+		String Film_ID;
+		String Film_Name;
+		String IMDB_Rating;
+		String Director_ID;
+		String Director_Name;
+		String Actor_ID;
+		String Actor_Name;
+		String Film_Year;
+
+		Film_ID = fields[0]; //Stores the content at position 0 in Film_ID.
+		Film_Name = fields[1]; 
+		IMDB_Rating = fields[2];
+		Director_ID = fields[3];
+		Director_Name = fields[4];
+		Actor_ID = fields[5];
+		Actor_Name = fields[6];
+		Film_Year = fields[7];
+
+		Director dd = setDirector(Director_Name,Director_ID);
+		Actor aa = setActor(Actor_Name,Actor_ID);
+		Film a = new Film();
+		 a = setFilm(dd,aa,Film_ID,Film_Name,Film_Year,IMDB_Rating);
+		for(Film f : films){
+			if(f.FilmID.equals(Film_ID)){
+				f.Directors.add(dd);
+				f.Actors.add(aa);
+				 a = f;
+			}else {
+				
+			}
+		}
+			
+		return a;
+
+	}
+	
+
+	public static Director setDirector (String Director_Name ,String Director_ID){
+		//this is storing the Director name and ID in object d. 
+		Director d = new Director();
+		d.setDirectorName(Director_Name);
+		d.setDirectorID(Director_ID);
+
+		return d;
+	}
+
+	public static Actor setActor (String Actor_Name ,String Actor_ID){
+		//this is storing the Actor name and ID in object d. 
+		Actor a = new Actor();
+		a.setActorName(Actor_Name);
+		a.setActorID(Actor_ID);
+
+		return a;
+	}
+
+	public static Film setFilm (Director d, Actor a, String Film_ID ,String Film_Name,String Film_Year, String IMDB_Rating){
+
+
+		Film f = new Film(); //creating object f film
+		f.setActors(a);
+		f.setDirectors(d);
+		f.setFilmID(Film_ID);
+		f.setFilmName(Film_Name);
+		f.setFilmYear(Film_Year);
+		f.setImdbRating(IMDB_Rating);
+		return f;
+	}
+}
+
+
+
+

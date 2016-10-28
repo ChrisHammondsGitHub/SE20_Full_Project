@@ -1,0 +1,77 @@
+package MovieDataLayer;
+
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import MovieClassLayer.*;
+
+public class MovieDataLayer {
+
+	public static Films GetCsvData(String FilePath){
+
+		String Film_ID;
+		String Film_Name;
+		String IMDB_Rating;
+		String Director_ID;
+		String Director_Name;
+		String Actor_ID;
+		String Actor_Name;
+		String Film_Year;
+
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader("TestData.csv"));
+			String line = br.readLine(); // Reading header. Ignores the first line.
+
+			while ((line = br.readLine()) != null && !line.isEmpty()) {
+				String[] fields = line.split(","); //Splits the line by comma values
+
+				Film_ID = fields[0]; //Stores the content at position 0 in Film_ID.
+				Film_Name = fields[1]; 
+				IMDB_Rating = fields[2];
+				Director_ID = fields[3];
+				Director_Name = fields[4];
+				Actor_ID = fields[5];
+				Actor_Name = fields[6];
+				Film_Year = fields[7];
+
+
+				//this is storing the Director name and ID in object d. 
+				Director d = new Director();
+				d.setDirectorName(Director_Name);
+				d.setDirectorID(Director_ID);
+
+				//this is storing the Actor name and ID in object a 
+				Actor a = new Actor();
+				a.setActorName(Actor_Name);
+				a.setActorID(Actor_ID);
+	
+
+				Film f = new Film(); //creating object f film
+				f.setActors(a);
+				f.setDirectors(d);
+				f.setFilmID(Film_ID);
+				f.setFilmName(Film_Name);
+				f.setFilmYear(Film_Year);
+				f.setImdbRating(IMDB_Rating);
+
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+
+	}
+}
+
+
+
+

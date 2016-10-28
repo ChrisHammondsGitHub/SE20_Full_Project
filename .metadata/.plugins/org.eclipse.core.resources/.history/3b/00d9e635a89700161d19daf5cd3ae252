@@ -1,0 +1,11 @@
+package MovieBusinessLayer;
+
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String p = MovieBusinessLayer.GetFilmsFromCSV("C:\\Everything\\Capita\\NovusMovieProject\\MovieDataLayer\\TestData.csv").getFilms().get(0).FilmName;
+ System.out.println(p);
+	}
+
+}

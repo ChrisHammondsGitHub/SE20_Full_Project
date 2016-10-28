@@ -1,0 +1,28 @@
+package MovieClassLayer;
+
+import java.util.List;
+
+public class Film {
+	public String FilmID;
+	public String FilmName;
+	public String ImdbRating;
+	public String FilmYear;
+	public List<Actor> Actors;
+	public List<Director> Directors;
+
+
+	public Film(){
+		this.Directors =null;
+		this.Actors =null;
+	}
+
+	public Film(String ID, String Name, String Rating, String Year, List<Director> Directors, List<Actor> Actors) {
+		this.FilmID = ID;
+		this.FilmName = Name;
+		this.ImdbRating = Rating;
+		this.FilmYear = Year;
+		this.Directors =Directors;
+		this.Actors =Actors;
+
+	}
+}
